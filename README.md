@@ -4,5 +4,17 @@ McKenzie_CSCI2270_FinalProject
 Group Members: Marcus Garza, Julio Lopez, Philip McKenzie
 
 Project Summary:
-Our project will implement some of the functions of the social media wesite Facebook. The user will be prompted for a menu with options add friends, delete friends, create a new account, find mutual friends, check for peoples birthdays and find how many friends apart two individuals are (edge length). To do this the program will read in from, and update, a text file containing names, freinds(edges), and date of birth. The Program itself will implement friend lists using graphs and use structs to store information about individuals.
+Our project will be a program that implements social networking functions using the graph data structure. The user will be prompted with the display menu, from there you will be able to add friends, find mutual friends(display personal information), delete a friend, and create an account. The program will read in a text file of a list of friends with specific details about that person that will be individually stored as a "friend" struct.
+
+Dependencies:
+Program will run through the virtual machine
+
+System Requirements:
+No additional system requirements.
+
+Contributers:
+Rhonda Hoenigman: Suggested additional methods, edge length between friends
+
+
+
 
