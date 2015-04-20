@@ -6,41 +6,50 @@
 using namespace std;
 
 //meet the variables
-string newName;
-int newDOB;
+string newName;			//name to be associated with creating a new account
+int newDOB;				//DOB to be associated with creating a new account
 
 
 
 
-void friendGraph::displayMenu()
+void friendGraph::displayMenuOne()
 {
 	cout<< " Welcome to Social Media" << endl;
-	cout<< " Would you like to... " <<endl;
-	cout<< " Create an Account? (create) " << endl;
+	cout<< " Lets start by creating an account" << endl;
+	cout<< " To create an account type (create)" << endl;
+}
+
+void friendGraph::displayMenuTwo()
+{
+	cout<< " Now that you have created an account would you like to...
+	//cout<< " Create an Account? (create) " << endl;
 	cout<< " Add a friend? (add) " << endl;
 	cout<< " Delete a friend? (delete) "<< endl;
 	cout<< " Check a friends birthday? (dob) " << endl;
 	cout<< " Check how many friends seperate you and another account? (depth) " << endl;
 }
 
-void friendGraph::createAccount();
+void friendGraph::createAccount(string newName, int newDOB)
 {
-	cout<< "create" <<endl;
+	cout<< "entered create" <<endl;
 }
-void friendGraph::addFriend();
+void friendGraph::addVertex()
 {
-	cout<<"add"<<endl;
+	cout<<"entered add account"<<endl;
 }
-void friendGraph::deleteFriend();
+void friendGraph::deleteFriend()
 {
-	cout<<"delete"<<endl;
+	cout<<"entered delete"<<endl;
 }
-void friendGraph::checkDOB();
+void friendGraph::checkDOB()
 {
-	cout << "dob" << endl;
+	cout << "entered dob" << endl;
 }
-void friendGraph::checkDepth();
+void friendGraph::checkDepth()
 {
-	cout << "depth" endl;
+	cout << "entered depth"<< endl;
 }
-	
+
+void friendGraph::addEdge()
+{
+	cout<<"entered add friend"<<endl;
