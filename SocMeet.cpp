@@ -8,20 +8,26 @@ using namespace std;
 int main(int argc, char*argv[])
 {
 	friendGraph *FG = new friendGraph();
-	FG->displayMenu();
 	string cmd = "";
-	cin.ignore();
-	getline(cin, cmd);
-	
+	string newName;			//name to be associated with creating a new account
+	int newDOB;				//DOB to be associated with creating a new account
+	FG->displayMenuOne();
+		cout<< "What is your name? " <<endl;
+		getline(cin , newName);
+		cout<< "what is your date of birth? (enter in format mmddyy)"<<endl;
+		getline(cin, newDOB);
+
+	FG->displayMenuTwo;
+	getline(cin,cmd);
 	if(cmd == "create" || cmd == "add" || cmd == "delete" || cmd == "dob" || cmd == "depth")
 	{
 		if( cmd == "create")
 		{
-			FG->createAccount();
+			FG->addVertex();
 		}
 		else if( cmd == "add")
 		{
-			FG->addFriend();
+			FG->addEdge();
 		}
 		else if( cmd == "delete")
 		{
