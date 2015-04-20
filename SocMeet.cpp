@@ -1,3 +1,4 @@
+//Phil, Julio, Marcus
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,32 +7,38 @@ using namespace std;
 
 int main(int argc, char*argv[])
 {
-	void displayMenu();
+	friendGraph *FG = new friendGraph();
+	FG->displayMenu();
+	string cmd = "";
 	cin.ignore();
 	getline(cin, cmd);
 	
-	while(cmd == "create" || cmd == "add" || cmd == "delete" || cmd == "DOB" || cmd == "depth")
+	if(cmd == "create" || cmd == "add" || cmd == "delete" || cmd == "dob" || cmd == "depth")
 	{
 		if( cmd == "create")
 		{
-			
+			FG->createAccount();
 		}
 		else if( cmd == "add")
 		{
-			
+			FG->addFriend();
 		}
 		else if( cmd == "delete")
 		{
-			
+			FG->deleteFriend();
 		}
-		else if( cmd == "DOB")
+		else if( cmd == "dob")
 		{
-			
+			FG->checkDOB();
 		}
 		else if( cmd == "depth")
 		{
-			
+			FG->checkDepth();
+		}
+	}
+		else
+		{
+		cout << "Please enter valid command" << endl;
+		void displayMenu();
 		}
 }
-
-cout<< "Please enter valid command" << endl;
