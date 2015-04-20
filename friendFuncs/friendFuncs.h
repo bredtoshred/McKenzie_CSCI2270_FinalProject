@@ -8,13 +8,17 @@ class friendGraph
 	public:
 	friendGraph(){}
 	~friendGraph();
-	void buildGraph();
-	void displayMenu();
+	//friendGraph buildGraph();
+	
+	void addEdge();
+	void addVertex();
+	void displayMenuOne();
+	void displayMenuTwo();
 	void createAccount();
-	void addFriend();
 	void deleteFriend();
 	void checkDOB();
 	void checkDepth();
+	//void addFriend();
 	
 };
 
