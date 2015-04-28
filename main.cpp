@@ -7,16 +7,16 @@
 
 using namespace std;
 
-void displayMenu1();
-void displayMenu2(Person* user);
-Person* makeAccount(int ID);
-bool checkBD(int dob);
+void displayMenu1();// first display menu to allow you to login and create an account
+void displayMenu2(Person* user);// display once you're logged in as an account
+Person* makeAccount(int ID);// make an account
+bool checkBD(int dob);// check if the date entered is valid
 
 int main()
 {
-    mockFacebook fbData;
+    mockFacebook fbData;// instance of the class
     ifstream infile;
-    infile.open("fbInfo1.txt");
+    infile.open("fbInfo1.txt");// reads in text file in order to add in preloaded users and their friends list
     string line, token, name, location;
     int dob,addingFriend;
     int id = 0;
@@ -29,39 +29,39 @@ int main()
             istringstream iss (line);
             while (getline(iss, token, ','))
             {
-                if (token == "Users" && spot == 0)
+                if (token == "Users" && spot == 0)// once the text file hits Users, the next spot is the name
                     spot = 1;
-                else if (token == "friends")
+                else if (token == "friends")// once it hits friends, read in user's list of friends
                     spot = 4;
-                else if(token == "end")
+                else if(token == "end")// also knows it's still parsing the friend list, does not include end.
                     spot = 4;
                 else if (spot == 1)
                 {
-                    name = token;
+                    name = token;// sets name
                     spot++;
                 }
                 else if (spot == 2)
                 {
-                    dob = stoi(token);
+                    dob = stoi(token);//sets date of birth
                     spot++;
                 }
                 else if(spot == 3)
                 {
-                    location = token;
-                    Person* newUser = new Person(name, dob, location, id);
-                    fbData.addPerson(newUser);
+                    location = token;// sets location
+                    Person* newUser = new Person(name, dob, location, id);//creates a new user, stores in name, DOB, location, id into the person struct
+                    fbData.addPerson(newUser);//adds the new user to the graph
                     spot = 1;
-                    id++;
+                    id++;// increases id, so there are no two similar ids
                 }
                 else if (spot == 4)
                 {
-                    currentUser = stoi(token);
+                    currentUser = stoi(token);// sets current user to last in list of users
                     spot = 5;
                 }
                 else if (spot == 5)
                 {
                     addingFriend = stoi(token);
-                    fbData.addFriend(currentUser, addingFriend);
+                    fbData.addFriend(currentUser, addingFriend);//creates new user's friend list
                 }
 
             }
@@ -76,32 +76,32 @@ int main()
     {
         if (menu == 1)
         {
-            displayMenu1();
+            displayMenu1();// displays login menu as long as menu =1
             cin >> command;
             if (command == 1)
             {
                 string username;
                 cout << "Enter username: ";
                 getline(cin >> ws, username);
-                currentLogin = fbData.getUser(username);
+                currentLogin = fbData.getUser(username);// retrieves user from current list of users, sets it as current
                 if (currentLogin == NULL)
                     cout << "User not found!" << endl;
                 else
                 {
                     cout << "User found!" << endl;
                     cout << "Welcome " << currentLogin->name << '!' << endl;
-                    menu = 2;
+                    menu = 2;// sets menu to 2, brings user to main menu
                 }
             }
             else if (command == 2)
             {
-                fbData.addPerson(makeAccount(id));
+                fbData.addPerson(makeAccount(id));// creates account, iterate id afterwards
                 id++;
                 cout << "Account made successfully!" << endl;
             }
             else if (command == 3)
-                fbData.printUsers();
-            else if (command == 4)
+                fbData.printUsers();// displays all users
+            else if (command == 4)// displays help menu
             {
                 cout << "Welcome to a smaller version of Facebook. Currently we have \n"  << \
                               "five options to choose from. Option 1 lets you sign into a user \n" << \
@@ -114,29 +114,31 @@ int main()
             else if (command == 5)
             {
                 cout << "Goodbye!" << endl;
-                quit = true;
+                quit = true;// quits program
             }
         }
         else if (menu == 2)
         {
-            displayMenu2(currentLogin);
+            displayMenu2(currentLogin);//displays main menu
             cin >> command;
             if (command == 1)
             {
                 cout<<currentLogin->name<<"'s current friends:"<<endl;
-                fbData.printFriends(currentLogin);
+                fbData.printFriends(currentLogin);// prints the current user's friend list, iterates through the friend struct
             }
             else if (command ==2)
             {
                 cout<<"All current users: "<<endl;
-                fbData.printUsers();
+                fbData.printUsers();// displays all users, not just friends, iterates through the people struct
+
             }
+
             else if (command == 3)
             {
                 string newFriend;
                 cout << "What is your friends name?" << endl;
                 getline(cin>>ws, newFriend);
-                int userId = fbData.getUserId(currentLogin);
+                int userId = fbData.getUserId(currentLogin);// adds new friend using the currentLogin's userId, and newFriend
                 fbData.addFriend(userId,newFriend);
             }
             else if (command == 4 )
@@ -144,7 +146,7 @@ int main()
                 string exFriend;
                 cout << "Which friend would you like to remove?" << endl;
                 getline(cin>>ws, exFriend);
-                fbData.deleteFriend(currentLogin, exFriend);
+                fbData.deleteFriend(currentLogin, exFriend);// accesses delete function, removes exFriend from currentLogin's friend list
             }
             else if (command == 5)
             {
@@ -153,9 +155,9 @@ int main()
                 string mutualFriend;
                 cout<<"Please enter a friend you would like to compare friends: "<<endl;
                 getline(cin>>ws, mutualFriend);
-                Person* friendCompare = fbData.getUser(mutualFriend);
+                Person* friendCompare = fbData.getUser(mutualFriend);//retrieves user that you're looking for
                 if(friendCompare != NULL)
-                    fbData.mutualFriends(friendCompare, currentLogin);
+                    fbData.mutualFriends(friendCompare, currentLogin);//compares friend's vectors between currentLogin and the requested user
                 else
                     cout<<"Friend does not exist!"<<endl;
             }
@@ -166,16 +168,16 @@ int main()
                 cout<<"Would you like to view your profile or a friend's(personal/friend):"<<endl;
                 cin>>user_input;
                 if(user_input == "personal")
-                    fbData.display(currentLogin);
+                    fbData.display(currentLogin);//displays current
                 else if(user_input == "friend"){
                     cout<<"Enter a friend you would like to find: "<<endl;
                     getline(cin>>ws,user_input1);
-                    fbData.displayInfo(user_input1);
+                    fbData.displayInfo(user_input1);// displays desired user by first searching through the people struct
                 }
                 else
                     cout<<"User was not found. "<<endl;
             }
-            else if (command == 7)
+            else if (command == 7)// deletes account
             {
                 string confirmation;
                 cout << "Are you sure you want to delete this account (yes/no)" << endl;
@@ -187,7 +189,7 @@ int main()
                     menu = 1;
                 }
             }
-            else if (command == 8)
+            else if (command == 8)//help screen
             {
                 cout << "Welcome " << currentLogin->name << '!' << " Now that you're logged in, " << \
                               "you have more options on what you can do. By selecting 1. you can see" << \
@@ -200,7 +202,7 @@ int main()
             }
             else if (command == 9 )
             {
-                currentLogin = NULL;
+                currentLogin = NULL;// resets display to login screen
                 menu = 1;
             }
         }
@@ -231,7 +233,7 @@ void displayMenu2(Person* user)
     cout << "9. Logout" << endl;
 }
 
-Person* makeAccount(int ID)
+Person* makeAccount(int ID)// stores requested info into new Person, creates a new user.
 {
     string name,location;
     int DOB;
