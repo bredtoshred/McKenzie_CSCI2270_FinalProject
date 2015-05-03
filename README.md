@@ -8,8 +8,8 @@ Our project will be a program that implements social networking functions using 
 
 How to run:
 The user will run this program through the command line.
-1) Download or Clone the Git reposotory to your downloads folder at https://github.com/bredtoshred/McKenzie_CSCI2270_FinalProject
-2) Open a new terminal window.
+1) Download or Clone the Git reposotory to your downloads folder at https://github.com/bredtoshred/McKenzie_CSCI2270_FinalProject /n
+2) Open a new terminal window. /n
 3) Change your directory to the folder you just downloaded containing the files you just downloaded using the cd command.
 4) Compile the code using g++ -std=c++11 main.cpp mockFacebook.cpp mockFacebook.h
 5) Run the code using ./a.out
