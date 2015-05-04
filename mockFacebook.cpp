@@ -20,7 +20,7 @@ void mockFacebook::addPerson(Person* user)
     people.push_back(user);// adds user to people vector
 }
 
-void mockFacebook::deletePerson(Person* user)
+void mockFacebook::deletePerson(Person* user)           //delete user
 {
     people.erase(people.begin() + user->ID);
     for (int i = 0 ; i < people.size() ; i++ )
@@ -30,7 +30,7 @@ void mockFacebook::deletePerson(Person* user)
     delete user;
 }//erases user from people vector
 
-void mockFacebook::printUsers()
+void mockFacebook::printUsers()                     //print list of users
 {
     for (int i = 0 ; i < people.size() ; i++)
     {
@@ -38,7 +38,7 @@ void mockFacebook::printUsers()
     }
 }//displays all users
 
-void mockFacebook::addFriend(int userId, string friendName)
+void mockFacebook::addFriend(int userId, string friendName)         // create path between you and another user
 {
     bool friendFound = false;
     int friendId;
@@ -98,7 +98,7 @@ void mockFacebook::addFriend(int userId, int friendId)
     }
 }
 
-void mockFacebook::deleteFriend(Person* user, string exFriend)
+void mockFacebook::deleteFriend(Person* user, string exFriend)          //delete edge
 {
     int id;
     for (int i = 0 ; i < people.size() ; i ++)
@@ -146,17 +146,17 @@ Person* mockFacebook::getUser(string username)
     return NULL;
 }
 
-int mockFacebook::getUserId(Person* username)
+int mockFacebook::getUserId(Person* username)           //getter for user id
 {
     return username->ID;
 }
 
-void mockFacebook::printFriends(Person* user)
+void mockFacebook::printFriends(Person* user)               // print freinds list
 {
     for (int i = 0 ; i < user->friends.size() ; i ++)
         cout << user->friends[i].fbFriend->name << endl;
 }
-void mockFacebook::displayInfo(string friend_name)
+void mockFacebook::displayInfo(string friend_name)          //print info about individual
 {
     for(int i=0; i< people.size(); i++)
     {
@@ -173,7 +173,7 @@ void mockFacebook::displayInfo(string friend_name)
 
 }
 
-void mockFacebook::display(Person* user)
+void mockFacebook::display(Person* user)            //display user info
 {
     for(int i=0; i< people.size(); i++)
     {
@@ -190,7 +190,7 @@ void mockFacebook::display(Person* user)
 
 
 }
-void mockFacebook::mutualFriends(Person* user, Person* currentUser)
+void mockFacebook::mutualFriends(Person* user, Person* currentUser)     //display mutual friends
 {
     int count1=0;
     for(int i=0; i<user->friends.size();i++)
