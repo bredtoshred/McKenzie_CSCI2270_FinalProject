@@ -12,7 +12,7 @@ The user will run this program through the command line.
 
 1) Download or Clone the Git reposotory to your downloads folder at https://github.com/bredtoshred/McKenzie_CSCI2270_FinalProject 
 
-2) Open a new terminal window. /n
+2) Open a new terminal window. 
 
 3) Change your directory to the folder you just downloaded containing the files you just downloaded using the cd command.
 
